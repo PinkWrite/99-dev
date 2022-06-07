@@ -1,0 +1,20 @@
+- Observer page to see all editor notes from all observed blocks
+  - Use observer-block-notes-fiddle.sql
+- Add to `notes` table:
+  - `type` ENUM('note', 'editor_note', 'task') NOT NULL,
+  - `status` ENUM('live', 'draft', 'archived') NOT NULL,
+  - `seen_writer` ENUM('new', 'read', 'archived') NOT NULL,
+  - `seen_observer` ENUM('new', 'read', 'archived') NOT NULL,
+- Implement `notes` changes for editor notes ('b notes')
+  - All `FROM notes` SQL queries to use `WHERE status='live' AND type='editor_note'`
+  - Radio options in editor_note `<form>` for `status` and `type`
+  - Filters and special row colors for `status` and `type`
+  - Writers have option to start writ from a task
+  - `seen_`
+    - note_editor.php to write note as "new" on UPDATE
+    - note_view.php to write note as "read"
+    - list_notes_editor_10.ins & list_notes_editor_view.ins special color for row on new
+    - archive only applies to writer & observer on personal b notes
+    - observer can see whether writer has seen the b note
+    - archive option as bulk actions
+    - archived b notes page in writer, observer & editor lockers, bulk action to restore, but no delete option
