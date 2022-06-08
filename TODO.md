@@ -1,5 +1,19 @@
 - Observer page to see all editor notes from all observed blocks
   - Use observer-block-notes-fiddle.sql
+  - After migrating to MariaDB, test and remove DEV tags in list_notes_editor_view.ins.php for binder_observer.php
+- Implement b notes into tables, for by-writer on:
+  - enrollment_observer.ins
+  - enrollment_editor.ins
+- Add Observer > Blocks
+  - Use
+    - https://stackoverflow.com/questions/72515789/sql-join-two-json-columns-by-two-related-ids
+    - https://dbfiddle.uk/?rdbms=mariadb_10.6&fiddle=016fe5724f2deb57bc8f2e017868dfb4
+  - Blocks link to:
+    - B notes per block: binder_observer.php
+    - Writs per block: writs_observer.php
+      - Modify list_observees.ins
+        - Sort by block
+        - If GET b (filter block) is set, display link to all blocks (writs_observer.php without GET b)
 - Add to `notes` table:
   - `type` ENUM('note', 'editor_note', 'task') NOT NULL,
   - `status` ENUM('live', 'draft', 'archived') NOT NULL,
