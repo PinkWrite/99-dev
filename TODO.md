@@ -1,7 +1,7 @@
-- Observer page to see all editor notes from all observed blocks
+- Observer page to see all memos from all observed blocks
   - Use observer-block-notes-fiddle.sql
   - After migrating to MariaDB, test and remove DEV tags in list_notes_editor_view.ins.php for binder_observer.php
-- Implement b notes into tables, for by-writer on:
+- Implement memos into tables, for by-writer on:
   - enrollment_observer.ins
   - enrollment_editor.ins
 - Add Observer > Blocks
@@ -9,7 +9,7 @@
     - https://stackoverflow.com/questions/72515789/sql-join-two-json-columns-by-two-related-ids
     - https://dbfiddle.uk/?rdbms=mariadb_10.6&fiddle=016fe5724f2deb57bc8f2e017868dfb4
   - Blocks link to:
-    - B notes per block: binder_observer.php
+    - Memos per block: binder_observer.php
     - Writs per block: writs_observer.php
       - Modify list_observees.ins
         - Sort by block
@@ -19,7 +19,7 @@
   - `status` ENUM('live', 'draft', 'archived') NOT NULL,
   - `seen_writer` ENUM('new', 'read', 'archived') NOT NULL,
   - `seen_observer` ENUM('new', 'read', 'archived') NOT NULL,
-- Implement `notes` changes for editor notes ('b notes')
+- Implement `notes` changes for memos ('memos')
   - All `FROM notes` SQL queries to use `WHERE status='live' AND type='editor_note'`
   - Radio options in editor_note `<form>` for `status` and `type`
   - Filters and special row colors for `status` and `type`
@@ -28,7 +28,7 @@
     - note_editor.php to write note as "new" on UPDATE
     - note_view.php to write note as "read"
     - list_notes_editor_10.ins & list_notes_editor_view.ins special color for row on new
-    - archive only applies to writer & observer on personal b notes
-    - observer can see whether writer has seen the b note
+    - archive only applies to writer & observer on personal memos
+    - observer can see whether writer has seen the memo
     - archive option as bulk actions
-    - archived b notes page in writer, observer & editor lockers, bulk action to restore, but no delete option
+    - archived memos page in writer, observer & editor lockers, bulk action to restore, but no delete option
